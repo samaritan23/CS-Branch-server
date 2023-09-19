@@ -7,7 +7,7 @@ const verifyPassword = require("../config/verifyPassword")
 // @route           POST /api/user/
 // @access          Public
 const registerUser = async (req, res) => {
-  const { name, email, password, pic } = req.body;
+  const { name, email, password, isAgent, pic } = req.body;
 
   // Check if any of them is undefined
   if (!name || !email || !password) {
@@ -37,11 +37,13 @@ const registerUser = async (req, res) => {
           name,
           email,
           password: await generateHashedPassword(password),
+          isAgent
         }
       : {
           name,
           email,
           password: await generateHashedPassword(password),
+          isAgent,
           pic,
         }
   );
