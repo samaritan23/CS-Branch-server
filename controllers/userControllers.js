@@ -1,9 +1,7 @@
 const User = require("../models/User");
-const {
-  generateToken,
-  generateHashedPassword,
-  verifyPassword,
-} = require("../config");
+const generateToken = require("../config/generateToken")
+const generateHashedPassword = require("../config/generateHashedPassword")
+const verifyPassword = require("../config/verifyPassword")
 
 // @description     Register new user
 // @route           POST /api/user/
