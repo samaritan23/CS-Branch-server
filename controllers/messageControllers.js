@@ -27,9 +27,10 @@ const sendMessage = async (req, res) => {
       await message.populate("sender", "name pic")
     ).populate({
       path: "chat",
-      select: "chatName isGroupChat users",
+      select: "agent customer",
       model: "Chat",
-      populate: { path: "users", select: "name email pic", model: "User" },
+      // populate: { path: "agent", select: "name email pic", model: "User" },
+      // populate: { path: "customer", select: "name email pic", model: "User" }
     });
 
     // Update latest message

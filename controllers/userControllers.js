@@ -55,6 +55,7 @@ const registerUser = async (req, res) => {
       _id: userCreated._id,
       name: userCreated.name,
       email: userCreated.email,
+      isAgent: userCreated.isAgent,
       pic: userCreated.pic,
       token: generateToken(userCreated._id, userCreated.email),
       message: "User Created Successfully",
@@ -94,6 +95,7 @@ const authUser = async (req, res) => {
       _id: userExists._id,
       name: userExists.name,
       email: userExists.email,
+      isAgent: userExists.isAgent,
       pic: userExists.pic,
       token: generateToken(userExists._id, userExists.email),
       message: "Authenticated Successfully",
@@ -111,6 +113,13 @@ const authUser = async (req, res) => {
 // @route           GET /api/user?search=
 // @access          Public
 const allUsers = async (req, res) => {
+  if (!req.user.isAgent) {
+    return res.status(401).json({
+        success: false,
+        statusCode: 401,
+        message: "User is not agent"
+    })
+  }
   // Keyword contains search results
   const keyword = req.query.search
     ? {
@@ -123,7 +132,7 @@ const allUsers = async (req, res) => {
 
   // Find and return users except current user
   const userExists = await User.find(keyword)
-    .find({ _id: { $ne: req.user._id } })
+    .find({ _id: { $ne: req.user._id }, isAgent: false })
     .exec();
 
   return res.status(200).json(userExists);
