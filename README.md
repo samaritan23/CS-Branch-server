@@ -31,14 +31,13 @@ git clone https://github.com/samaritan23/cs-branch-server.git
 cd cs-branch-server
 ```
 
-### 3. Rename `.env_example` into `.env` and put all creadentials:
+### 3. Rename `.env_example` into `.env` and put all credentials:
 
 ```bash
 PORT=5000
 MONGO_URI="YOUR_MONGO_CONNECTION_URL"
 JWT_SECRET="YOUR_JWT_SECRET"
 JWT_EXPIRE=2d
-NODE_ENV=development # Change to "production" when deploying
 ```
 
 ### 4. Install package dependencies (node>=16 and npm>=8 needed):
