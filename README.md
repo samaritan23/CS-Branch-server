@@ -16,7 +16,7 @@ Backend for Branch International's customer messaging web app
 
 ## 📖 Prerequisites
 
-In order to run the project you need `node>=16` and `npm>=8` installed on your machine.
+In order to run the project you need `node>=16` and `npm>=8` and MongoDB Compass installed on your machine.
 
 ## 🚩 Getting Started
 
